@@ -16,8 +16,29 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //todo add
-    //private Difficulty difficulty;
+    /**
+     * Difficulty เป็น enum ประกาศไว้ใช้งาน
+     * enum คือ ค่า fix ไว้ใน class เลยใช้สำหรับตัวที่มี value แค่ไม่กี่อย่าง คล้าย ๆ กับ EDT ใน ax เลย
+     */
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public UnitOfMeasure getUom() {
+        return uom;
+    }
+
+    public void setUom(UnitOfMeasure uom) {
+        this.uom = uom;
+    }
+
     @Lob
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
@@ -113,13 +134,5 @@ public class Recipe {
 
     public void setIngredient(Set<Ingredient> ingredient) {
         this.ingredient = ingredient;
-    }
-
-    public UnitOfMeasure getUnitOfMeasure() {
-        return uom;
-    }
-
-    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
-        this.uom = unitOfMeasure;
     }
 }
