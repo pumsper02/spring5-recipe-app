@@ -11,7 +11,11 @@ public class Ingredient {
 
     private String description;
     private BigDecimal amount;
-//    private  UnitOfMeasure amount;
+    /**
+     * default type ของ oneToOne เป็น Eager อยู่แล้ว แต่ใส่ไว้ให้รู้เฉย ๆ
+     */
+    @OneToOne(fetch = FetchType.EAGER)
+    private  UnitOfMeasure uom;
     @ManyToOne
     private Recipe recipe;
 
